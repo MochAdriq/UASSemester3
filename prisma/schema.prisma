@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// File: schema.prisma
+
+model User {
+  username String    @id @db.VarChar(100)
+  password String    @db.VarChar(100)
+  name     String    @db.VarChar(100)
+  token    String?    @db.VarChar(100)
+  events   Event[]
+
+  @@map("users")
+}
+
+model Event {
+  eventId          Int          @id @default(autoincrement())
+  eventName        String       @db.VarChar(100)
+  eventDate        DateTime
+  location         String       @db.VarChar(100)
+  attendanceStatus AttendanceStatus
+  username         String       @db.VarChar(100)
+  user             User         @relation(fields: [username], references: [username])
+  @@index([username], name: "idx_user_events_username")
+
+  @@map("UserEvents")
+}
+
+enum AttendanceStatus {
+  Hadir
+  TidakHadir
+  MungkinHadir
+}

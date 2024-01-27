@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    image: arm64v8/mysql
+    env_file: ./.env
+    ports:
+      - $MYSQL_PORT:$MYSQL_PORT
+    volumes:
+      - ./db:/var/lib/mysql

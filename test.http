@@ -1,0 +1,67 @@
+POST http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username" : "dikri",
+  "password" : "rahasia",
+  "name" : "dikri maulana"
+}
+
+###
+
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username" : "dikri",
+  "password" : "rahasia"
+}
+
+###
+
+GET http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 88985a92-9dd7-41b9-bb5f-7b4b222d0aa2
+
+###
+
+PATCH http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 30140662-7b81-44d7-9cb1-5911c6aea0a8
+
+{
+  "name" : "Dikri Maulana Kasep"
+}
+
+###
+
+DELETE http://localhost:3000/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: 30140662-7b81-44d7-9cb1-5911c6aea0a8
+
+###
+
+POST http://localhost:3000/api/events
+Content-Type: application/json
+Accept: application/json
+Authorization: 88985a92-9dd7-41b9-bb5f-7b4b222d0aa2
+
+{
+    "eventName": "Ifest",
+    "eventDate": "2024-02-10T18:00:00",
+    "location": "Moonshine",
+    "attendanceStatus": "Hadir"
+}
+
+###
+
+GET http://localhost:3000/api/events
+Content-Type: application/json
+Accept: application/json
+Authorization: 88985a92-9dd7-41b9-bb5f-7b4b222d0aa2
+
