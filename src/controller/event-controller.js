@@ -60,7 +60,7 @@ const search = async (req, res, next) => {
   try {
     const user = req.user;
     const request = {
-      name: req.query.name,
+      eventName: req.query.eventName,
       location: req.query.location,
       attendanceStatus: req.query.attendanceStatus,
       page: req.query.page,

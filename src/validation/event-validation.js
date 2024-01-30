@@ -24,7 +24,7 @@ const updateEventValidation = Joi.object({
 const searchEventValidation = Joi.object({
   page: Joi.number().min(1).positive().default(1),
   size: Joi.number().min(1).positive().max(100).default(10),
-  name: Joi.string().optional(),
+  eventName: Joi.string().optional(),
   location: Joi.string().optional(),
   attendanceStatus: Joi.string()
     .valid("Hadir", "TidakHadir", "MungkinHadir")

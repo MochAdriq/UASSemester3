@@ -116,51 +116,54 @@ const search = async (user, request) => {
     username: user.username,
   });
 
-  if (request.name) {
+  if (request.eventName) {
     filters.push({
-      name: {
-        contains: request.name,
+      eventName: {
+        contains: request.eventName,
       },
     });
-    if (request.location) {
-      filters.push({
-        location: {
-          contains: request.location,
-        },
-      });
-    }
-    if (request.attendanceStatus) {
-      filters.push({
-        attendanceStatus: {
-          contains: request.attendanceStatus,
-        },
-      });
-    }
-
-    const events = await prismaClient.event.findMany({
-      where: {
-        AND: filters,
-      },
-      take: request.size,
-      skip: skip,
-    });
-
-    const totalItems = await prismaClient.event.count({
-      where: {
-        AND: filters,
-      },
-    });
-
-    return {
-      data: events,
-      paging: {
-        page: request.page,
-        total_item: totalItems,
-        total_page: Math.ceil(totalItems / request.size),
-      },
-    };
   }
+
+  if (request.location) {
+    filters.push({
+      location: {
+        contains: request.location,
+      },
+    });
+  }
+
+  if (request.attendanceStatus) {
+    filters.push({
+      attendanceStatus: {
+        contains: request.attendanceStatus,
+      },
+    });
+  }
+
+  const event = await prismaClient.event.findMany({
+    where: {
+      AND: filters,
+    },
+    take: request.size,
+    skip: skip,
+  });
+
+  const totalItems = await prismaClient.event.count({
+    where: {
+      AND: filters,
+    },
+  });
+
+  return {
+    data: event,
+    paging: {
+      page: request.page,
+      total_item: totalItems,
+      total_page: Math.ceil(totalItems / request.size),
+    },
+  };
 };
+
 export default {
   create,
   get,
