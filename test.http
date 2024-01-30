@@ -42,7 +42,7 @@ Authorization: 30140662-7b81-44d7-9cb1-5911c6aea0a8
 DELETE http://localhost:3000/api/users/logout
 Content-Type: application/json
 Accept: application/json
-Authorization: 88985a92-9dd7-41b9-bb5f-7b4b222d0aa2
+Authorization: 4acd4078-848c-46f4-b46f-68d935f5a6e6
 
 ###
 
@@ -88,8 +88,8 @@ Authorization: 19dfc22d-4545-45a9-9b36-ec0fc3fee291
 
 ### Delete events
 
-DELETE http://localhost:3000/api/events/1
+DELETE http://localhost:3000/api/events/280
 Content-Type: application/json
 Accept: application/json
-Authorization: 19dfc22d-4545-45a9-9b36-ec0fc3fee291
+Authorization: 4acd4078-848c-46f4-b46f-68d935f5a6e6
 
